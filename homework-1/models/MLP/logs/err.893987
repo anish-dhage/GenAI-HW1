@@ -1,0 +1,32 @@
+2025-02-15 18:10:48.502845: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-02-15 18:10:48.537229: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1739661048.552570  629520 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1739661048.557529  629520 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-02-15 18:10:48.575174: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+I0215 18:11:19.207915 23048790127616 main.py:395] Seed: 0
+I0215 18:11:19.233469 23048790127616 utils.py:24] Experiment directory: /tmp/experiments/unnamed
+Traceback (most recent call last):
+  File "/share/csc591s25/conda_env/new_env/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/share/csc591s25/conda_env/new_env/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/gpfs_common/share01/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/MLP/cache_replacement/policy_learning/cache_model/main.py", line 569, in <module>
+    app.run(main)
+  File "/share/csc591s25/conda_env/new_env/lib/python3.9/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/share/csc591s25/conda_env/new_env/lib/python3.9/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "/gpfs_common/share01/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/MLP/cache_replacement/policy_learning/cache_model/main.py", line 412, in main
+    common_utils.create_experiment_directory(exp_dir, FLAGS.force_overwrite)
+  File "/gpfs_common/share01/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/MLP/cache_replacement/policy_learning/common/utils.py", line 30, in create_experiment_directory
+    raise ValueError(
+ValueError: Experiment directory: /tmp/experiments/unnamed already exists.
+/home/adhage/.lsbatch/1739660371.893987.shell: line 32: --experiment_base_dir=/share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/MLP/experiments: No such file or directory
+/home/adhage/.lsbatch/1739660371.893987.shell: line 34: --experiment_name=train_mlp_neuron32_1: command not found
+/home/adhage/.lsbatch/1739660371.893987.shell: line 36: --cache_configs=cache_replacement/policy_learning/cache/configs/default.json: No such file or directory
+/home/adhage/.lsbatch/1739660371.893987.shell: line 38: --model_bindings=address_embedder.max_vocab_size=5000: command not found
+/home/adhage/.lsbatch/1739660371.893987.shell: line 40: --model_bindings=lstm_hidden_size=32: command not found
+/home/adhage/.lsbatch/1739660371.893987.shell: line 42: --train_memtrace=/share/csc591s25/traces/astar_313B_train.csv: No such file or directory
+/home/adhage/.lsbatch/1739660371.893987.shell: line 43: --valid_memtrace=/share/csc591s25/traces/astar_313B_valid.csv: No such file or directory

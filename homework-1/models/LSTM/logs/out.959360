@@ -1,0 +1,65 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@gpu05>
+Subject: Job 959360: <training_lstm_ranking> in cluster <Hazel> Exited
+
+Job <training_lstm_ranking> was submitted from host <login04> by user <adhage> in cluster <Hazel> at Wed Feb 19 11:58:30 2025
+Job was executed on host(s) <gpu05>, in queue <gpu>, as user <adhage> in cluster <Hazel> at Wed Feb 19 11:59:12 2025
+</home/adhage> was used as the home directory.
+</share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/LSTM/scripts> was used as the working directory.
+Started at Wed Feb 19 11:59:12 2025
+Terminated at Thu Feb 20 07:58:51 2025
+Results reported at Thu Feb 20 07:58:51 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -n 1
+#BSUB -W 48:00
+#BSUB -q gpu
+#BSUB -gpu "num=1"
+#BSUB -J training_lstm_ranking
+#BSUB -o /share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/LSTM/logs/out.%J
+#BSUB -e /share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/LSTM/logs/err.%J
+
+
+source ~/.bashrc
+conda activate /share/$GROUP/conda_env/new_env
+cd /share/$GROUP/$USER/GenAI-for-Systems-Gym/homework-1/models/LSTM
+
+python3 -m cache_replacement.policy_learning.cache_model.main \
+  --experiment_base_dir=/share/$GROUP/$USER/GenAI-for-Systems-Gym/homework-1/models/LSTM/experiments \
+  --experiment_name=train_lstm_ranking1 \
+  --cache_configs=cache_replacement/policy_learning/cache/configs/default.json \
+  --model_bindings="loss=[\"log_likelihood\", \"reuse_dist\"]" \
+  --model_bindings="address_embedder.max_vocab_size=5000" \
+  --train_memtrace=cache_replacement/policy_learning/cache/traces/sample_trace.csv \
+  --valid_memtrace=cache_replacement/policy_learning/cache/traces/sample_trace.csv
+
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   71625.98 sec.
+    Max Memory :                                 1 GB
+    Average Memory :                             1.00 GB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                10
+    Run time :                                   71983 sec.
+    Turnaround time :                            72021 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/LSTM/logs/err.959360> for stderr output of this job.
+

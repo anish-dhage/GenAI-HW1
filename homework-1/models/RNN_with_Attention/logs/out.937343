@@ -1,0 +1,71 @@
+%%%%%%%%%%%%%%%%
+tensor([[0., 0.],
+        [0., 0.]])
+hi
+hi
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@gpu14>
+Subject: Job 937343: <training_rnn_wa_att_hist40> in cluster <Hazel> Exited
+
+Job <training_rnn_wa_att_hist40> was submitted from host <login04> by user <adhage> in cluster <Hazel> at Mon Feb 17 21:06:48 2025
+Job was executed on host(s) <gpu14>, in queue <gpu>, as user <adhage> in cluster <Hazel> at Mon Feb 17 22:50:41 2025
+</home/adhage> was used as the home directory.
+</share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/RNN_with_Attention/scripts> was used as the working directory.
+Started at Mon Feb 17 22:50:41 2025
+Terminated at Tue Feb 18 20:53:49 2025
+Results reported at Tue Feb 18 20:53:49 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -n 1
+#BSUB -W 48:00
+#BSUB -q gpu
+#BSUB -gpu "num=1"
+#BSUB -J training_rnn_wa_att_hist40
+#BSUB -o /share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/RNN_with_Attention/logs/out.%J
+#BSUB -e /share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/RNN_with_Attention/logs/err.%J
+
+
+source ~/.bashrc
+conda activate /share/$GROUP/conda_env/new_env
+cd /share/$GROUP/$USER/GenAI-for-Systems-Gym/homework-1/models/RNN_with_Attention
+
+python3 -m cache_replacement.policy_learning.cache_model.main \
+  --experiment_base_dir=/share/$GROUP/$USER/GenAI-for-Systems-Gym/homework-1/models/RNN_with_Attention/experiments \
+  --experiment_name=train_rnn_wa_att_hist40 \
+  --cache_configs=cache_replacement/policy_learning/cache/configs/default.json \
+  --model_bindings="loss=[\"ndcg\", \"reuse_dist\"]" \
+  --model_bindings="address_embedder.max_vocab_size=5000" \
+  --model_bindings="max_attention_history=40" \
+  --train_memtrace=/share/$GROUP/traces/astar_313B_train.csv \
+  --valid_memtrace=/share/$GROUP/traces/astar_313B_valid.csv
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 130.
+
+Resource usage summary:
+
+    CPU time :                                   79093.71 sec.
+    Max Memory :                                 9 GB
+    Average Memory :                             7.53 GB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                10
+    Run time :                                   79391 sec.
+    Turnaround time :                            85621 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/RNN_with_Attention/logs/err.937343> for stderr output of this job.
+

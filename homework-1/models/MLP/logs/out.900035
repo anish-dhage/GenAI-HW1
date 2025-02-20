@@ -1,0 +1,65 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@gpu12>
+Subject: Job 900035: <training_mlp_leaky> in cluster <Hazel> Exited
+
+Job <training_mlp_leaky> was submitted from host <login04> by user <adhage> in cluster <Hazel> at Sat Feb 15 21:29:53 2025
+Job was executed on host(s) <gpu12>, in queue <gpu>, as user <adhage> in cluster <Hazel> at Sat Feb 15 21:59:35 2025
+</home/adhage> was used as the home directory.
+</share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/MLP/scripts> was used as the working directory.
+Started at Sat Feb 15 21:59:35 2025
+Terminated at Sun Feb 16 11:10:27 2025
+Results reported at Sun Feb 16 11:10:27 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -n 1
+#BSUB -W 48:00
+#BSUB -q gpu
+#BSUB -gpu "num=1"
+#BSUB -J training_mlp_leaky
+#BSUB -o /share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/MLP/logs/out.%J
+#BSUB -e /share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/MLP/logs/err.%J
+
+
+source ~/.bashrc
+conda activate /share/$GROUP/conda_env/new_env
+cd /share/$GROUP/$USER/GenAI-for-Systems-Gym/homework-1/models/MLP
+
+python3 -m cache_replacement.policy_learning.cache_model.main_leaky\
+  --experiment_base_dir=/share/$GROUP/$USER/GenAI-for-Systems-Gym/homework-1/models/MLP/experiments \
+  --experiment_name=train_mlp_leaky \
+  --cache_configs=cache_replacement/policy_learning/cache/configs/default.json \
+  --model_bindings="address_embedder.max_vocab_size=5000" \
+  --train_memtrace=/share/$GROUP/traces/astar_313B_train.csv \
+  --valid_memtrace=/share/$GROUP/traces/astar_313B_valid.csv
+
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 143.
+
+Resource usage summary:
+
+    CPU time :                                   47237.00 sec.
+    Max Memory :                                 9 GB
+    Average Memory :                             8.42 GB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                10
+    Run time :                                   47446 sec.
+    Turnaround time :                            49234 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </share/csc591s25/adhage/GenAI-for-Systems-Gym/homework-1/models/MLP/logs/err.900035> for stderr output of this job.
+
